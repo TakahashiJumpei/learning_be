@@ -11,6 +11,10 @@ class Auth{
     public static function login($id, $pwd){
 
         try {
+            if (!(UserModel::validateId($id)
+                * UserModel::validatePwd($pwd))) {
+                return false;
+            }
 
             $is_success = false;
     
@@ -22,10 +26,10 @@ class Auth{
                     $is_success = true;
                     UserModel::setSession($user);
                 }else{
-                    echo 'パスワードが一致しません。';
+                    Msg::push(Msg::ERROR, 'パスワードが一致しません。');
                 }
             }else{
-                echo 'ユーザが見つかりません。';
+                Msg::push(Msg::ERROR, 'ユーザーが見つかりません。');
             }
             //var_dump($result);
 
@@ -43,13 +47,18 @@ class Auth{
     public static function regist($user){
 
         try {
+            if (!($user->isValidId()
+                * $user->isValidPwd()
+                * $user->isValidNickname())) {
+                return false;
+            }
 
             $is_success = false;
     
             $exist_user = UserQuery::fetchById($user->id);
 
             if(!empty($exist_user)){
-                echo 'ユーザがすでに存在します。';
+                Msg::push(Msg::ERROR, 'ユーザーがすでに存在します。');
                 return false;
             }
 
@@ -76,7 +85,7 @@ class Auth{
         try {
 
             $user = UserModel::getSession();
-            
+
         } catch (Throwable $e) {
 
             UserModel::clearSession();
