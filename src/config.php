@@ -1,6 +1,6 @@
 <?php 
-$uri = $_SERVER['REQUEST_URI'];
-if(preg_match("/(.+(src))/i", $uri, $match)) {
+define('CURRENT_URI', $_SERVER['REQUEST_URI']);
+if(preg_match("/(.+(src))/i", CURRENT_URI, $match)) {
     //var_dump($match);
     define('BASE_CONTEXT_PATH', $match[0] . '/');
 }

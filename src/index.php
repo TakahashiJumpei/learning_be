@@ -3,6 +3,10 @@ require_once 'config.php';
 
 // echo $_SERVER['REQUEST_URI'];
 
+// Library
+require_once SOURCE_BASE . 'libs/helper.php';
+require_once SOURCE_BASE . 'libs/auth.php';
+
 //Models
 require_once SOURCE_BASE . 'models/user.model.php';
 
@@ -10,15 +14,17 @@ require_once SOURCE_BASE . 'models/user.model.php';
 require_once SOURCE_BASE . 'db/datasource.php';
 require_once SOURCE_BASE . 'db/user.query.php';
 
+session_start();
 
-use db\UserQuery;
-$result = UserQuery::fetchById('test');
-var_dump($result);
+
+// use db\UserQuery;
+// $result = UserQuery::fetchById('test');
+// var_dump($result);
 
 
 require_once SOURCE_BASE . 'partials/header.php';
 
-$rpath = str_replace(BASE_CONTEXT_PATH, '', $_SERVER['REQUEST_URI']);
+$rpath = str_replace(BASE_CONTEXT_PATH, '', CURRENT_URI);
 // echo $rpath;
 $method = strtolower($_SERVER['REQUEST_METHOD']);
 // echo $method;
