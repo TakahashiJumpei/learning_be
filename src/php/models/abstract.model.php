@@ -28,4 +28,18 @@ abstract class AbstractModel{
 
     }
 
+    public static function getSessionAndFlush() {
+
+        try {
+
+            return static::getSession();
+
+        } finally {
+
+            static::clearSession();
+
+        }
+        
+    }
+
 }
