@@ -7,10 +7,12 @@ require_once SOURCE_BASE . 'partials/header.php';
 
 $rpath = str_replace(BASE_CONTEXT_PATH, '', $_SERVER['REQUEST_URI']);
 // echo $rpath;
+$method = strtolower($_SERVER['REQUEST_METHOD']);
+// echo $method;
 
-route($rpath);
+route($rpath, $method);
 
-function route($rpath){
+function route($rpath, $method){
     if($rpath === ''){
         $rpath = 'home';
     }
@@ -23,7 +25,9 @@ function route($rpath){
     }
     require_once $targetFile;
 
-    
+    $fn = "\\controller\\{$rpath}\\{$method}";
+
+    $fn();
 
 }
 
