@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,9 +9,10 @@
     <link rel="stylesheet" href="<?php echo BASE_CSS_PATH ?>sample.css">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>    
-    <?php 
-    use lib\Auth;
+
+<body>
+    <?php
+
     use lib\Msg;
 
     Msg::flush();
@@ -18,4 +20,16 @@
 
     ?>
 
-<button class="btn btn-primary">Hello Bootstrap</button>
+    <div id="container">
+        <header class="container my-2">
+            <nav class="row align-items-center py-2">
+                <a href="" class="col-md d-flex align-items-center mb-3 mb-md-0">
+                    <img width="50" class="mr-2" src="images/logo.svg" alt="みんなのアンケート　サイトロゴ">
+                    <span class="h2 font-weight-bold mb-0">みんなのアンケート</span>
+                </a>
+                <div class="col-md-auto">
+                    <a href="" class="btn btn-primary mr-2">登録</a>
+                    <a href="">ログイン</a>
+                </div>
+            </nav>
+        </header>
