@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>みんなのアンケート</title>
     <link rel="stylesheet" href="<?php echo BASE_CSS_PATH ?>sample.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>    
     <?php 
@@ -14,4 +15,7 @@
 
     Msg::flush();
 
+
     ?>
+
+<button class="btn btn-primary">Hello Bootstrap</button>
