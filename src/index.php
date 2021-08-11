@@ -1,4 +1,4 @@
-<?php 
+<?php
 require_once 'config.php';
 
 // Library
@@ -28,15 +28,15 @@ try {
 
     $rpath = str_replace(BASE_CONTEXT_PATH, '', CURRENT_URI);
     $method = strtolower($_SERVER['REQUEST_METHOD']);
-    
-    route($rpath, $method);
-    
-    require_once SOURCE_BASE . 'partials/footer.php';
 
-} catch(Throwable $e) {
+    route($rpath, $method);
+
+
+    require_once SOURCE_BASE . 'partials/footer.php';
+    
+} catch (Throwable $e) {
 
     die('<h1>何かが凄くおかしいようです。</h1>');
-    
 }
 
 ?>
