@@ -22,17 +22,6 @@ function post() {
         echo '認証失敗';
     }
 
-    // if(Auth::login($id, $pwd)) {
-
-    //     $user = UserModel::getSession();
-    //     Msg::push(Msg::INFO, "{$user->nickname}さん、ようこそ。");
-    //     redirect(GO_HOME);
-
-    // } else {
-
-    //     redirect(GO_REFERER);
-
-    // }
 }
 
 ?>
