@@ -7,4 +7,11 @@
     <title>みんなのアンケート</title>
     <link rel="stylesheet" href="<?php echo BASE_CSS_PATH ?>sample.css">
 </head>
-<body>
+<body>    
+    <?php 
+    use lib\Auth;
+    use lib\Msg;
+
+    Msg::flush();
+
+    ?>

@@ -1,49 +1,42 @@
 <?php 
 require_once 'config.php';
 
-// echo $_SERVER['REQUEST_URI'];
+// Library
+require_once SOURCE_BASE . 'libs/helper.php';
+require_once SOURCE_BASE . 'libs/auth.php';
+require_once SOURCE_BASE . 'libs/router.php';
 
-require_once SOURCE_BASE . 'partials/header.php';
+//Models
+require_once SOURCE_BASE . 'models/abstract.model.php';
+require_once SOURCE_BASE . 'models/user.model.php';
 
-$rpath = str_replace(BASE_CONTEXT_PATH, '', $_SERVER['REQUEST_URI']);
-// echo $rpath;
-$method = strtolower($_SERVER['REQUEST_METHOD']);
-// echo $method;
+// Message
+require_once SOURCE_BASE . 'libs/message.php';
 
-route($rpath, $method);
+// DB
+require_once SOURCE_BASE . 'db/datasource.php';
+require_once SOURCE_BASE . 'db/user.query.php';
 
-function route($rpath, $method){
-    if($rpath === ''){
-        $rpath = 'home';
-    }
+use function lib\route;
+
+session_start();
+
+
+try {
+
+    require_once SOURCE_BASE . 'partials/header.php';
+
+    $rpath = str_replace(BASE_CONTEXT_PATH, '', CURRENT_URI);
+    $method = strtolower($_SERVER['REQUEST_METHOD']);
     
-    $targetFile = SOURCE_BASE . "controllers/{$rpath}.php";
+    route($rpath, $method);
     
-    if(!file_exists($targetFile)){
-        require_once SOURCE_BASE . "views/404.php";
-        return;
-    }
-    require_once $targetFile;
+    require_once SOURCE_BASE . 'partials/footer.php';
 
-    $fn = "\\controller\\{$rpath}\\{$method}";
+} catch(Throwable $e) {
 
-    $fn();
-
+    die('<h1>何かが凄くおかしいようです。</h1>');
+    
 }
-
-
-
-
-
-
-// if($_SERVER['REQUEST_URI'] === '/app/src/login'){
-//     require_once SOURCE_BASE . 'controllers/login.php';
-// }else if($_SERVER['REQUEST_URI'] === '/app/src/register'){
-//     require_once SOURCE_BASE . 'controllers/register.php';
-// }else if($_SERVER['REQUEST_URI'] === '/app/src/'){
-//     require_once SOURCE_BASE . 'controllers/home.php';
-// }
-
-require_once SOURCE_BASE . 'partials/footer.php';
 
 ?>
