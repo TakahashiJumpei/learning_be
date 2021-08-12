@@ -1,4 +1,4 @@
-<main class="container py-3">
+
     <div class="py-5">
         <div class="row">
             <div class="col">
@@ -70,7 +70,3 @@
         </ul>
     </div>
 
-</main>
-<footer class="text-center p-3">
-    <span class="text-muted"> &copy; CodeMafia</span>
-</footer>

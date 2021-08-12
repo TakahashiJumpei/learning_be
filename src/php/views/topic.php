@@ -1,4 +1,4 @@
-<main class="container py-3">
+
     <h1 class="h2 mb-3">トピック作成</h1>
 
     <div class="bg-white p-4 shadow-sm mx-auto rounded">
@@ -24,9 +24,3 @@
             </div>
         </form>
     </div>
-
-
-</main>
-<footer class="text-center p-3">
-    <span class="text-muted"> &copy; CodeMafia</span>
-</footer>

@@ -1,8 +1,4 @@
-<h1>Topページ</h1>
 
-
-
-<main class="container py-3">
     <h1 class="sr-only">ログイン</h1>
     <div class="my-5">
         <div class="text-center mb-4">
@@ -29,9 +25,3 @@
             </form>
         </div>
     </div>
-
-
-</main>
-<footer class="text-center p-3">
-    <span class="text-muted"> &copy; CodeMafia</span>
-</footer>
