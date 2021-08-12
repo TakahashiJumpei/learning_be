@@ -6,7 +6,8 @@ use lib\Msg;
 use model\UserModel;
 
 function get() {
-    require_once SOURCE_BASE . 'views/login.php';
+    
+    \view\login\index();
 }
 
 function post() {

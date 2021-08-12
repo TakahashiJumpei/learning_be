@@ -17,6 +17,13 @@ require_once SOURCE_BASE . 'libs/message.php';
 require_once SOURCE_BASE . 'db/datasource.php';
 require_once SOURCE_BASE . 'db/user.query.php';
 
+// Partials
+require_once SOURCE_BASE . 'partials/header.php';
+require_once SOURCE_BASE . 'partials/footer.php';
+
+// View
+require_once SOURCE_BASE . 'views/login.php';
+
 use function lib\route;
 
 session_start();
@@ -24,15 +31,14 @@ session_start();
 
 try {
 
-    require_once SOURCE_BASE . 'partials/header.php';
+    \partials\header();
 
     $rpath = str_replace(BASE_CONTEXT_PATH, '', CURRENT_URI);
     $method = strtolower($_SERVER['REQUEST_METHOD']);
 
     route($rpath, $method);
 
-
-    require_once SOURCE_BASE . 'partials/footer.php';
+    \partials\footer();
     
 } catch (Throwable $e) {
 
