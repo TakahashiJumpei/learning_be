@@ -1,4 +1,4 @@
-<main class="container py-3">
+
     <h1 class="h2 mb-3">過去の投稿</h1>
     <ul class="container">
         <li class="topic row bg-white shadow-sm mb-3 rounded p-3">
@@ -26,8 +26,3 @@
             </div>
         </li>
     </ul>
-
-</main>
-<footer class="text-center p-3">
-    <span class="text-muted"> &copy; CodeMafia</span>
-</footer>

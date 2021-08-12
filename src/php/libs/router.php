@@ -20,6 +20,7 @@ function route($rpath, $method){
         }
         require_once $targetFile;
     
+        $rpath = str_replace('/', '\\', $rpath);
         $fn = "\\controller\\{$rpath}\\{$method}";
     
         $fn();
