@@ -1,13 +1,16 @@
-<?php 
+<?php
+
 namespace db;
 
 use db\DataSource;
 use model\TopicModel;
 
-class TopicQuery {
-    public static function fetchByUserId($user) {
+class TopicQuery
+{
+    public static function fetchByUserId($user)
+    {
 
-        if(!$user->isValidId()) {
+        if (!$user->isValidId()) {
             return false;
         }
 
@@ -19,11 +22,11 @@ class TopicQuery {
         ], DataSource::CLS, TopicModel::class);
 
         return $result;
-
     }
 
 
-    public static function fetchPublishedTopics() {
+    public static function fetchPublishedTopics()
+    {
 
         $db = new DataSource;
         $sql = '
@@ -41,15 +44,15 @@ class TopicQuery {
         $result = $db->select($sql, [], DataSource::CLS, TopicModel::class);
 
         return $result;
-
     }
 
-    public static function fetchById($topic) {
+    public static function fetchById($topic)
+    {
 
-        if(!$topic->isValidId()) {
+        if (!$topic->isValidId()) {
             return false;
         }
-        
+
         $db = new DataSource;
         $sql = '
         select 
@@ -68,7 +71,6 @@ class TopicQuery {
         ], DataSource::CLS, TopicModel::class);
 
         return $result;
-
     }
 
     public static function incrementViewCount($topic)
@@ -128,4 +130,25 @@ class TopicQuery {
             ':id' => $topic->id,
         ]);
     }
+
+    public static function insert($topic, $user)
+    {
+
+        if (!($user->isValidId()
+            * $topic->isValidTitle()
+            * $topic->isValidPublished())) {
+            return false;
+        }
+
+        $db = new DataSource;
+        $sql = 'insert into topics(title, published, user_id) values (:title, :published, :user_id)';
+
+        return $db->execute($sql, [
+            ':title' => $topic->title,
+            ':published' => $topic->published,
+            ':user_id' => $user->id,
+        ]);
+    }
+
+    
 }
