@@ -71,18 +71,20 @@ class TopicQuery {
         return $result;
 
     }
-    // public static function insert($user) {
+    
+    public static function incrementViewCount($topic)
+    {
 
-    //     $db = new DataSource;
-    //     $sql = 'insert into users(id, pwd, nickname) values (:id, :pwd, :nickname)';
+        if (!$topic->isValidId()) {
+            return false;
+        }
 
-    //     $user->pwd = password_hash($user->pwd, PASSWORD_DEFAULT);
+        $db = new DataSource;
 
-    //     return $db->execute($sql, [
-    //         ':id' => $user->id,
-    //         ':pwd' => $user->pwd,
-    //         ':nickname' => $user->nickname,
-    //     ]);
+        $sql = 'update topics set views = views + 1 where id = :id;';
 
-    // }
+        return $db->execute($sql, [
+            ':id' => $topic->id
+        ]);
+    }
 }
