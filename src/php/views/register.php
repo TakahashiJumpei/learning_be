@@ -6,14 +6,13 @@ function index()
 {
 
 ?>
-
     <h1 class="sr-only">アカウント登録</h1>
     <div class="mt-5">
         <div class="text-center mb-4">
             <img width="65" src="images/logo.svg" alt="みんなのアンケート　サイトロゴ">
         </div>
         <div class="login-form bg-white p-4 shadow-sm mx-auto rounded">
-            <form action="<?php echo CURRENT_URI; ?>" method="POST">
+            <form action="<?php echo CURRENT_URI; ?>" method="POST" novalidate autocomplete="off">
                 <div class="form-group">
                     <label for="id">ユーザーID</label>
                     <input id="id" type="text" name="id" class="form-control">
