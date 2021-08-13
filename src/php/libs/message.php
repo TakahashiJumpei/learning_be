@@ -41,7 +41,7 @@ class Msg extends AbstractModel
                 $color = $type === static::INFO ? 'alert-info' : 'alert-danger';
     
                 foreach($msgs as $msg) {
-                    echo "<div class='alert $color'>{$type}:{$msg}</div>";
+                    echo "<div class='alert $color'>{$msg}</div>";
                 }
             }
             

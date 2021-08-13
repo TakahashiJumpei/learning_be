@@ -25,7 +25,6 @@ class UserQuery{
 
         $user->pwd = password_hash($user->pwd, PASSWORD_DEFAULT);
 
-
         return $db->execute($sql, [
             ':id' => $user->id,
             ':pwd' => $user->pwd,
